@@ -13,14 +13,13 @@ const SES = new AWS.SES({
   apiVersion: '2010-12-01',
 });
 
-
 /**
  * 
  * @param {*} toMail 
  * @param {*} generatedRandomNumber 
  * @description Send Welcome Email With Passcode
 */
-router.get('/:mailTo', function(req, res, next) {
+router.get('/:mailTo', async (req, res, next) => {
   let {mailTo} = req.params;
   let {message,subject} = req.query;
   let from = process.env.ACCOUNT_VERIFICATION_EMAIL_FROM;
